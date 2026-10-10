@@ -6,6 +6,10 @@ public class Hero implements Character{
     private int numAmigosDefendidos;
 
     //constructor
+    public Hero(){
+
+    }
+
     public Hero(String name){
         this.name = name;
         this.numEnemigosMuertos = 0;
@@ -18,13 +22,13 @@ public class Hero implements Character{
     }
 
     //aunq ponga que se muestre X mensaje y sea con el syso, hay que poner void.
-    public void Attack(Enemy enemy){
+    public void attack(Enemy enemy){
        System.out.println("¡He atacado a un enemigo!");
        enemy.kill();
        numEnemigosMuertos++;
     }
 
-    public void Defend(Friend friend){
+    public void defend(Friend friend){
         System.out.println("¡He defendido a un amigo!");
         friend.heal();
         numAmigosDefendidos++;
