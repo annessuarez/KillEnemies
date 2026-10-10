@@ -25,13 +25,13 @@ public class Hero implements Character{
     public void attack(Enemy enemy){
        System.out.println("¡He atacado a un enemigo!");
        enemy.kill();
-       numEnemigosMuertos++;
+       numEnemigosMuertos +=1;
     }
 
     public void defend(Friend friend){
         System.out.println("¡He defendido a un amigo!");
         friend.heal();
-        numAmigosDefendidos++;
+        numAmigosDefendidos +=1;
     }
 
     //Getters del hero
