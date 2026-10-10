@@ -2,9 +2,11 @@ package org.cuatrovientos.psp;
 
 import java.util.ArrayList;
 import java.util.Collections;
+// import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+        // Scanner scan = new Scanner(System.in);
         ArrayList<Character> personajes = CrearListaYShuffle();
 
         for (int i = 0; i < personajes.size(); i++) {
@@ -16,6 +18,7 @@ public class App {
                 System.out.println("El personaje " + (i + 1) + " es un amigo!");
             }
         }
+        // scan.close();
     }
 
     // pertenece a la clase y no al objeto, en JAVA siempre static
