@@ -24,7 +24,7 @@ public class Hero implements Character{
     //aunq ponga que se muestre X mensaje y sea con el syso, hay que poner void.
     public void attack(Enemy enemy){
        System.out.println("¡He atacado a un enemigo!");
-       enemy.kill();
+       System.out.println(enemy.kill());
        numEnemigosMuertos +=1;
     }
 

@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "name": "Anne",
+    "numEnemigosMuertos": 1,
+    "numAmigosDefendidos": 0
+  },
+  "personajesString": [
+    "Friend",
+    "Friend",
+    "Friend",
+    "Enemie",
+    "Enemie",
+    "Enemie",
+    "Friend",
+    "Enemie",
+    "Friend"
+  ]
+}

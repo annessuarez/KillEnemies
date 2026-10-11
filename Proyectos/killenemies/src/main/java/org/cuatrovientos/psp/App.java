@@ -21,6 +21,12 @@ public class App {
         ArrayList<Character> personajes;
         String datoLeer;
 
+        //muestra de la versión 1
+        System.out.println("== Muestra versión 1 ==");
+        mostrarLucha(crearListaYShuffle());
+        System.out.println("");
+
+        //muestra version 2 con persistencia de datos
         if (eJ == null || eJ.getPersonajes() == null || eJ.getPersonajes().isEmpty()) {
             System.out.println("== Partida nueva ==");
             System.out.print("Introduce el nombre para tu heroe: ");
@@ -70,14 +76,15 @@ public class App {
                 break;
             }
 
-            System.out.println("Introduce número de personaje (1...10, ambos incusive): ");
-            datoLeer = scan.nextLine();
             esCorrecto = true;
-            int indicePersonaje = 0;
+            int indicePersonaje = -1;
+            
             do {
+            System.out.println("Introduce número de personaje (0...,"+ (personajes.size() - 1)+"): ");
+            datoLeer = scan.nextLine();
                 try {
                     indicePersonaje = Integer.parseInt(datoLeer);
-                    if (accion < 0 || accion > personajes.size()) {
+                    if (indicePersonaje < 0 || indicePersonaje >= personajes.size()) {
                         System.err.println("Indice fuera de rango.");
                         esCorrecto = false;
                     } else {
@@ -92,25 +99,22 @@ public class App {
             Character personaje = personajes.get(indicePersonaje);
             if (accion == 1) {
                 if (personaje.isEnemy()) { // la opcion elegida es un enemigo
-                    if (personaje instanceof Enemy enemy) { // hacemos el casteo para ver que tipo es el personaje
-                                                            // elegido
-                        System.out.println("¡Has atacado a un enemigo, bien hecho!");
-                        hero.attack(enemy);
-                    }
+                    Enemy enemy = (Enemy) personaje;
+                    System.out.println("¡Has atacado a un enemigo, bien hecho!");
+                    hero.attack(enemy);
                     personajes.remove(indicePersonaje);
                 } else {
                     System.out.println("Tolai, ¡Que es un amigo!");
                     personajes.remove(personaje);
-                    personajes.remove(indicePersonaje);
                 }
             } else if (accion == 2) {
                 if (personaje.isEnemy()) {
-                    if (personaje instanceof Friend friend) {
-                        System.out.println("¡Has defendido a un amigo, bien hecho!");
-                        hero.defend(friend);
-                    }
+                    System.out.println("Tolai, ¡Que es un enemigo! Se han duplicado.");
+                    personajes.add(new Enemy());
                 } else {
-                    System.out.println("Tolai, ¡Que es un enemigo!");
+                    Friend friend = (Friend) personaje;
+                    System.out.println("¡Has defendido a un amigo, bien hecho!");
+                    hero.defend(friend);
                 }
             }
 
@@ -132,8 +136,8 @@ public class App {
         for (int i = 0; i < personajes.size(); i++) {
             Character personaje = personajes.get(i);
             if (personaje instanceof Enemy enemy) {
-                System.err.println("El personaje " + (i + 1) + " es un enemigo! ¡Mátalo!");
-                System.err.println(enemy.kill());
+                System.out.println("El personaje " + (i + 1) + " es un enemigo! ¡Mátalo!");
+                System.out.println(enemy.kill());
             } else {
                 System.out.println("El personaje " + (i + 1) + " es un amigo!");
             }
